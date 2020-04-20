@@ -36,8 +36,8 @@ void Game::gameLoop() {
 		else if (key == 's') hero.y++;
 	}
 
-	gameScreen.clear(Screen::BG_BLUE);
-	infoScreen.clear(Screen::BG_BLUE);
+	gameScreen.clear(Entity::BG_CYAN);
+	infoScreen.clear(Entity::BG_BLUE);
 
 	gameScreen.draw(hero);
 

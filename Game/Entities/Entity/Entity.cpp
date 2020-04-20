@@ -1,9 +1,13 @@
 #include "Entity.h"
 
-void Entity::setTexture(std::vector<std::string> m) {
-	map = m;
-	width = map[0].length();
-	height = map.size();
+void Entity::setTexture(TxCharMap m, TxFGMap fArgs, TxFGMap bArgs, TxAlphaMap btM) {
+	textureMap = m;
+	foregroundMap = fArgs;
+	backgroundMap = bArgs;
+	bgTransparentMap = btM;
+
+	width = m[0].length();
+	height = m.size();
 }
 
 int Entity::getWidth() {
@@ -14,6 +18,18 @@ int Entity::getHeight() {
 	return height;
 }
 
-std::vector<std::string> Entity::getMap() {
-	return map;
+Entity::TxCharMap Entity::getTextureMap() {
+	return textureMap;
+}
+
+Entity::TxFGMap Entity::getForegroundMap() {
+	return foregroundMap;
+}
+
+Entity::TxFGMap Entity::getBackgroundMap() {
+	return backgroundMap;
+}
+
+Entity::TxAlphaMap Entity::getBgTransparentMap() {
+	return bgTransparentMap;
 }

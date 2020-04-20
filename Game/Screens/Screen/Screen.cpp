@@ -9,7 +9,7 @@ Screen::Screen(int w, int h, HANDLE* conHandlePointer){
 
     CHAR_INFO def;
     def.Char.UnicodeChar = ' ';
-    def.Attributes = BG_WHITE;
+    def.Attributes = Entity::BG_WHITE;
 
     for (int y = 0; y < height; y++) {
         std::vector<CHAR_INFO> row;
@@ -19,16 +19,22 @@ Screen::Screen(int w, int h, HANDLE* conHandlePointer){
 }
 
 void Screen::setChar(int x, int y, char ch, WORD attr) {
-    buffer[y][x].Char.AsciiChar = ch;
+    buffer[y][x].Char.UnicodeChar = ch;
     buffer[y][x].Attributes = attr;
 }
 
 void Screen::draw(Entity entity) {
     int yi = 0;
+    Entity::TxCharMap entityTX = entity.getTextureMap();
+    Entity::TxFGMap entityFG = entity.getForegroundMap();
+    Entity::TxBGMap entityBG = entity.getBackgroundMap();
+    Entity::TxAlphaMap entityBGT = entity.getBgTransparentMap();
+
     for (int y = 0; y < entity.getHeight(); y++) {
         int xi = 0;
         for (int x = 0; x < entity.getWidth(); x++) {
-            setChar(entity.x + xi, entity.y + yi, entity.getMap()[y][x], FG_LIGHTGRAY | BG_BLUE);
+            WORD blockAttr = (entityBGT[y][x] == 1) ? entityFG[y][x] | Screenbackground : entityFG[y][x] | entityBG[y][x];
+            setChar(entity.x + xi, entity.y + yi, entityTX[y][x], blockAttr);
             xi++;
         }
         yi++;
