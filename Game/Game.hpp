@@ -2,10 +2,10 @@
 #include <ctime>
 #include <windows.h>
 #include <iostream>
-#include "Screens/MainScreen/MainScreen.h"
-#include "Screens/GameScreen/GameScreen.h"
-#include "Screens/InfoScreen/InfoScreen.h"
-#include "Entities/Hero/Hero.h"
+#include "Screens/MainScreen/MainScreen.hpp"
+#include "Screens/GameScreen/GameScreen.hpp"
+#include "Screens/InfoScreen/InfoScreen.hpp"
+#include "Entities/Hero/Hero.hpp"
 
 class Game
 {

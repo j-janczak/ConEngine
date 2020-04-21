@@ -1,4 +1,4 @@
-#include "Entity.h"
+#include "Entity.hpp"
 
 void Entity::setTexture(TxCharMap m, TxFGMap fArgs, TxFGMap bArgs, TxAlphaMap btM) {
 	textureMap = m;

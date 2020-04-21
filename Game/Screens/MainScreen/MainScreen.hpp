@@ -1,5 +1,5 @@
 #pragma once
-#include "../Screen/Screen.h"
+#include "../Screen/Screen.hpp"
 
 class MainScreen :public Screen
 {

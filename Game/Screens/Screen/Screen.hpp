@@ -1,16 +1,18 @@
 #pragma once
 #include <windows.h>
-#include "../../Entities/Entity/Entity.h"
+#include "../../Entities/Entity/Entity.hpp"
+#include "../../Camera/Camera.hpp"
 
 class Screen
 {
 protected:
     HANDLE* conHandle;
-    WORD Screenbackground;
+    WORD ScreenBackground;
 
 public:
     int width, height;
     int offsetX = 0, offsetY = 0;
+    Camera camera;
     std::vector<std::vector<CHAR_INFO>> buffer;
 
     Screen(int, int, HANDLE*);

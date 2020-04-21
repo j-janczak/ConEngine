@@ -2,7 +2,7 @@
 #include <string>
 #include <windows.h>
 #include <conio.h>
-#include "Game.h"
+#include "Game.hpp"
 
 Game::Game(int w, int h) : 
 	mainScreen(w, h, &conHandle), 
@@ -34,12 +34,18 @@ void Game::gameLoop() {
 		else if (key == 'd') hero.x++;
 		else if (key == 'w') hero.y--;
 		else if (key == 's') hero.y++;
+
+		else if (key == 'j') gameScreen.camera.x--;
+		else if (key == 'l') gameScreen.camera.x++;
+		else if (key == 'i') gameScreen.camera.y--;
+		else if (key == 'k') gameScreen.camera.y++;
 	}
 
 	gameScreen.clear(Entity::BG_CYAN);
 	infoScreen.clear(Entity::BG_BLUE);
 
 	gameScreen.draw(hero);
+	infoScreen.drawText(1, 1, "Player: x: " + std::to_string(hero.x) + " y: " + std::to_string(hero.y) + " | Camera: x: " + std::to_string(gameScreen.camera.x) + " y: " + std::to_string(gameScreen.camera.y));
 
 	mainScreen.scale(gameScreen);
 	mainScreen.scale(infoScreen);

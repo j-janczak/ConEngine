@@ -1,4 +1,4 @@
-#include "MainScreen.h"
+#include "MainScreen.hpp"
 
 MainScreen::MainScreen(int w, int h, HANDLE* conHandlePointer) : Screen(w, h, conHandlePointer) {
 

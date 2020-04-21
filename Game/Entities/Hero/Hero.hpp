@@ -1,5 +1,5 @@
 #pragma once
-#include "../Entity/Entity.h"
+#include "../Entity/Entity.hpp"
 
 class Hero :public Entity
 {

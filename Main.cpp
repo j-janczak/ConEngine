@@ -1,6 +1,6 @@
 #include <ctime>
 #include <stdio.h>
-#include "Game\Game.h"
+#include "Game\Game.hpp"
 
 int main()
 {
