@@ -8,25 +8,25 @@ Hero::Hero()
 	WORD b1 = BG_GREEN;
 	WORD b2 = BG_GRAY;
 
-	Entity::TxCharMap texture = {
+	Sprite::TxCharMap texture = {
 		"   _ __",
 		"‹‹ÕÕ‹‹",
 		"ﬂ00000ﬂ"
 	};
 
-	Entity::TxFGMap foreground = {
+	Sprite::TxFGMap foreground = {
 		{f, f, f, f, f, f, f},
 		{f, f, f1, f1, f1, f, f},
 		{f, f1, f1, f1, f1, f1, f}
 	};
 
-	Entity::TxBGMap background = {
+	Sprite::TxBGMap background = {
 		{b, b, b, b, b, b, b},
 		{b, b, b1, b1, b1, b, b},
 		{b, b, b, b, b, b, b},
 	};
 
-	Entity::TxAlphaMap alpha = {
+	Sprite::TxAlphaMap alpha = {
 		{1, 1, 1, 1, 1, 1, 1},
 		{1, 1, 0, 0, 0, 1, 1},
 		{1, 1, 1, 1, 1, 1, 1}

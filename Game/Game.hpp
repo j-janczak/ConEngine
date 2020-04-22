@@ -15,6 +15,7 @@ private:
 	GameScreen gameScreen;
 	InfoScreen infoScreen;
 	Hero hero;
+	Sprite tank, man;
 	void gameLoop();
 
 public:

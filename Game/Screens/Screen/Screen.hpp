@@ -1,6 +1,7 @@
 #pragma once
 #include <windows.h>
 #include "../../Entities/Entity/Entity.hpp"
+#include "../../Sprite/Sprite.hpp"
 #include "../../Camera/Camera.hpp"
 
 class Screen
@@ -18,6 +19,7 @@ public:
     Screen(int, int, HANDLE*);
     void setChar(int, int, char, WORD);
     void draw(Entity);
+    void draw(Sprite, int, int);
     void clear(WORD);
 };
 

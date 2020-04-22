@@ -23,30 +23,32 @@ void Screen::setChar(int x, int y, char ch, WORD attr) {
     buffer[y][x].Attributes = attr;
 }
 
-void Screen::draw(Entity entity) {
-    Entity::TxCharMap entityTX = entity.getTextureMap();
-    Entity::TxFGMap entityFG = entity.getForegroundMap();
-    Entity::TxBGMap entityBG = entity.getBackgroundMap();
-    Entity::TxAlphaMap entityBGT = entity.getBgTransparentMap();
+void Screen::draw(Entity entity) {draw(entity, entity.x, entity.y);}
+
+void Screen::draw(Sprite sprite, int spriteX, int spriteY) {
+    Sprite::TxCharMap spriteTX = sprite.getTextureMap();
+    Sprite::TxFGMap spriteFG = sprite.getForegroundMap();
+    Sprite::TxBGMap spriteBG = sprite.getBackgroundMap();
+    Sprite::TxAlphaMap spriteBGT = sprite.getBgAlphaMap();
 
     int yi = 0;
-    for (int y = 0; y < entity.getHeight(); y++) {
+    for (int y = 0; y < sprite.getHeight(); y++) {
         int xi = 0;
-        int placeY = camera.calculateY(entity.y, yi);
+        int placeY = camera.calculateY(spriteY, yi);
         yi++;
 
         if (placeY >= height) break;
         if (placeY < 0) continue;
 
-        for (int x = 0; x < entity.getWidth(); x++) {
-            int placeX = camera.calculateX(entity.x, xi);
+        for (int x = 0; x < sprite.getWidth(); x++) {
+            int placeX = camera.calculateX(spriteX, xi);
             xi++;
 
             if (placeX >= width) break;
             if (placeX < 0) continue;
 
-            WORD blockAttr = entityBGT[y][x] ? entityFG[y][x] | ScreenBackground : entityFG[y][x] | entityBG[y][x];
-            setChar(placeX, placeY, entityTX[y][x], blockAttr);
+            WORD blockAttr = spriteBGT[y][x] ? spriteFG[y][x] | ScreenBackground : spriteFG[y][x] | spriteBG[y][x];
+            setChar(placeX, placeY, spriteTX[y][x], blockAttr);
         }
     }
 }

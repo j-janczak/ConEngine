@@ -14,6 +14,9 @@ Game::Game(int w, int h) :
 	cci.bVisible = false;
 	SetConsoleCursorInfo(conHandle, &cci);
 
+	tank.loadTexture("tank");
+	man.loadTexture("man");
+
 	SetConsoleTitleA("Haha! its a game");
 }
 
@@ -45,7 +48,10 @@ void Game::gameLoop() {
 	infoScreen.clear(Entity::BG_BLUE);
 
 	gameScreen.draw(hero);
+	gameScreen.draw(tank, -39, 8);
+	gameScreen.draw(man, 0, 0);
 	infoScreen.drawText(1, 1, "Player: x: " + std::to_string(hero.x) + " y: " + std::to_string(hero.y) + " | Camera: x: " + std::to_string(gameScreen.camera.x) + " y: " + std::to_string(gameScreen.camera.y));
+	//infoScreen.drawText(1, 0, std::to_string(tank.getBgAlphaMap()[1][3]));
 
 	mainScreen.scale(gameScreen);
 	mainScreen.scale(infoScreen);
